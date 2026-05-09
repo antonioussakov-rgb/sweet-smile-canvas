@@ -21,6 +21,7 @@ export const Hero = () => {
           playsInline
           preload="auto"
           className="h-full w-full object-cover"
+          style={{ objectPosition: "center 20%" }}
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-black/45" />
