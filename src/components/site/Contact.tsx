@@ -88,10 +88,3 @@ const Info = ({ icon: Icon, label, children }: { icon: typeof MapPin; label: str
   </div>
 );
 
-const Field = ({ id, label, error, children }: { id: string; label: string; error?: string; children: React.ReactNode }) => (
-  <div>
-    <Label htmlFor={id} className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">{label}</Label>
-    <div className="mt-1">{children}</div>
-    {error && <p className="text-xs text-destructive mt-1">{error}</p>}
-  </div>
-);
