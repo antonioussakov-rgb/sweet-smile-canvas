@@ -3,33 +3,29 @@ import { ChevronDown } from "lucide-react";
 import { useI18n } from "@/i18n/I18nProvider";
 import { useSiteSettings } from "@/contexts/SiteSettingsProvider";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-cabinet.jpg";
 
 export const Hero = () => {
   const { t, lang: _l } = useI18n(); const lang: "fr" | "ru" = _l === "en" ? "fr" : _l;
   const { settings } = useSiteSettings();
-  const img = settings.heroImageUrl || heroImage;
   const title = settings.heroTitle?.[lang] || t("hero.title");
   const subtitle = settings.heroSubtitle?.[lang] || t("hero.subtitle");
 
   return (
-    <section id="hero" className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-background">
+    <section id="hero" className="relative h-[100vh] min-h-[640px] w-full overflow-hidden bg-background">
       <div className="absolute inset-0">
-        <motion.img
-          src={img}
-          alt=""
-          width={1920}
-          height={1080}
-          initial={{ scale: 1.0 }}
-          animate={{ scale: 1.03 }}
-          transition={{ duration: 26, ease: "easeOut", repeat: Infinity, repeatType: "reverse" }}
-          className="h-full w-full object-cover object-center"
-          style={{ objectPosition: "center 35%" }}
+        <video
+          src="/videos/hero.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="h-full w-full object-cover"
           aria-hidden="true"
         />
+        <div className="absolute inset-0 bg-black/45" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/70" />
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero-radial)" }} />
-        <div className="absolute inset-0 bg-gradient-hero" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[hsl(220_50%_6%/0.6)] via-transparent to-transparent" />
       </div>
 
       <div className="relative z-10 h-full container-luxe flex flex-col justify-center pt-24 pb-20">
