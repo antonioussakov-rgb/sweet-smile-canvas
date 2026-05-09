@@ -139,6 +139,13 @@ export const Header = () => {
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 z-40 bg-black/40 backdrop-blur-2xl flex items-center justify-center"
           >
+            <button
+              onClick={() => setOpen(false)}
+              aria-label="Close menu"
+              className="absolute top-5 right-5 md:top-6 md:right-6 p-2 text-white/90 hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full"
+            >
+              <X className="h-7 w-7" />
+            </button>
             <nav className="flex flex-col items-center gap-8 text-center">
               {links.map((l, i) => (
                 <motion.button
