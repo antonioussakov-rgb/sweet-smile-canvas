@@ -63,7 +63,7 @@ const reviews: Review[] = [
 ];
 
 export const Reviews = () => {
-  const { t, lang } = useI18n();
+  const { t, lang: _l } = useI18n(); const lang: "fr" | "ru" = _l === "en" ? "fr" : _l;
   const [i, setI] = useState(0);
   const next = () => setI((i + 1) % reviews.length);
   const prev = () => setI((i - 1 + reviews.length) % reviews.length);

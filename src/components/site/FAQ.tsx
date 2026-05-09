@@ -33,7 +33,7 @@ const faqs: { q: LocalizedString; a: LocalizedString }[] = [
 ];
 
 export const FAQ = () => {
-  const { t, lang } = useI18n();
+  const { t, lang: _l } = useI18n(); const lang: "fr" | "ru" = _l === "en" ? "fr" : _l;
   return (
     <section id="faq" className="relative py-24 md:py-36 bg-background grain">
       <div className="container-luxe">

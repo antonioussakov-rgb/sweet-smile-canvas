@@ -16,7 +16,7 @@ const team = [
 ];
 
 export const About = () => {
-  const { t, lang } = useI18n();
+  const { t, lang: _l } = useI18n(); const lang: "fr" | "ru" = _l === "en" ? "fr" : _l;
   const { settings } = useSiteSettings();
   const body = settings.aboutBody?.[lang] || t("about.body");
   const philo = settings.aboutPhilosophy?.[lang] || t("about.philosophy");

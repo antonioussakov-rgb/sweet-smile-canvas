@@ -75,7 +75,7 @@ export const VideoSection = ({ id, desktopSrc, mobileSrc, eyebrow, title, subtit
 
 /** Convenience wrapper with i18n copy for the second video showcase. */
 export const ShowcaseVideo = () => {
-  const { t, lang } = useI18n();
+  const { t, lang: _l } = useI18n(); const lang: "fr" | "ru" = _l === "en" ? "fr" : _l;
   const copy = {
     fr: {
       eyebrow: "L'Art du Sourire",

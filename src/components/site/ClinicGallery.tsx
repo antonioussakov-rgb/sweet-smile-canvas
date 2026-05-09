@@ -11,7 +11,7 @@ const photos: { src: string; alt: LocalizedString }[] = [
 ];
 
 export const ClinicGallery = () => {
-  const { t, lang } = useI18n();
+  const { t, lang: _l } = useI18n(); const lang: "fr" | "ru" = _l === "en" ? "fr" : _l;
   return (
     <section id="clinic" className="relative py-24 md:py-36 bg-secondary grain">
       <div className="container-luxe">

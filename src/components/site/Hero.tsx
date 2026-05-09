@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-cabinet.jpg";
 
 export const Hero = () => {
-  const { t, lang } = useI18n();
+  const { t, lang: _l } = useI18n(); const lang: "fr" | "ru" = _l === "en" ? "fr" : _l;
   const { settings } = useSiteSettings();
   const img = settings.heroImageUrl || heroImage;
   const title = settings.heroTitle?.[lang] || t("hero.title");

@@ -23,7 +23,7 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 export const Contact = () => {
-  const { t, lang } = useI18n();
+  const { t, lang: _l } = useI18n(); const lang: "fr" | "ru" = _l === "en" ? "fr" : _l;
   const { settings } = useSiteSettings();
   const [sent, setSent] = useState(false);
 
