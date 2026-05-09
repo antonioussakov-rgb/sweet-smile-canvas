@@ -56,9 +56,7 @@ export const Header = () => {
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-background/85 backdrop-blur-xl shadow-soft" : "bg-transparent"
-      }`}
+      className="fixed top-0 inset-x-0 z-50 bg-transparent"
     >
       <div className="container-luxe flex items-center justify-between py-4 md:py-5">
         <button onClick={() => go("hero")} className="flex items-baseline gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">
@@ -135,18 +133,26 @@ export const Header = () => {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="bg-background border-t border-border"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-40 bg-black/40 backdrop-blur-2xl flex items-center justify-center"
           >
-            <div className="container-luxe py-6 flex flex-col gap-4">
-              {links.map((l) => (
-                <button key={l.id} onClick={() => go(l.id)} className="text-left text-foreground/80 hover:text-accent py-1">
+            <nav className="flex flex-col items-center gap-8 text-center">
+              {links.map((l, i) => (
+                <motion.button
+                  key={l.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + i * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  onClick={() => go(l.id)}
+                  className="font-serif text-3xl md:text-4xl text-white hover:text-accent transition-colors tracking-wide"
+                >
                   {t(l.key)}
-                </button>
+                </motion.button>
               ))}
-            </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>
