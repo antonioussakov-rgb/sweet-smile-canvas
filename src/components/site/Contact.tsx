@@ -84,43 +84,30 @@ export const Contact = () => {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <form onSubmit={handleSubmit(onSubmit)} className="bg-background p-10 md:p-12 shadow-luxe space-y-5">
-              <Field id="name" label={t("form.name")} error={errors.name?.message}>
-                <Input id="name" {...register("name")} className="rounded-none border-0 border-b border-border focus-visible:ring-0 focus-visible:border-accent px-0 h-11" />
-              </Field>
-              <div className="grid sm:grid-cols-2 gap-5">
-                <Field id="phone" label={t("form.phone")} error={errors.phone?.message}>
-                  <Input id="phone" type="tel" {...register("phone")} className="rounded-none border-0 border-b border-border focus-visible:ring-0 focus-visible:border-accent px-0 h-11" />
-                </Field>
-                <Field id="email" label={t("form.email")} error={errors.email?.message}>
-                  <Input id="email" type="email" {...register("email")} className="rounded-none border-0 border-b border-border focus-visible:ring-0 focus-visible:border-accent px-0 h-11" />
-                </Field>
-              </div>
-              <Field id="service" label={t("form.service")} error={errors.service?.message}>
-                <select
-                  id="service"
-                  {...register("service")}
-                  className="w-full bg-transparent border-0 border-b border-border focus:outline-none focus:border-accent h-11 text-sm"
-                  defaultValue=""
-                >
-                  <option value="" disabled>{t("form.selectService")}</option>
-                  {services.map((s) => (
-                    <option key={s.title.fr} value={s.title[lang]}>{s.title[lang]}</option>
-                  ))}
-                </select>
-              </Field>
-              <Field id="message" label={t("form.message")} error={errors.message?.message}>
-                <Textarea id="message" rows={4} {...register("message")} className="rounded-none border-0 border-b border-border focus-visible:ring-0 focus-visible:border-accent px-0 resize-none" />
-              </Field>
-
-              <Button
-                type="submit"
-                disabled={isSubmitting || sent}
-                className="w-full bg-accent text-accent-foreground hover:bg-accent/90 rounded-none h-14 tracking-[0.15em] text-xs uppercase shadow-gold"
+            <div className="bg-background p-10 md:p-12 shadow-luxe h-full flex flex-col items-center justify-center text-center">
+              <div className="eyebrow mb-8">{t("contact.phone")}</div>
+              <a
+                href={`tel:${settings.phoneHref}`}
+                className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground hover:text-accent transition-colors tracking-tight"
               >
-                {sent ? <><Check className="h-4 w-4 mr-2" /> {t("form.success")}</> : t("form.submit")}
-              </Button>
-            </form>
+                {settings.phone}
+              </a>
+              {settings.phoneSecondary && (
+                <a
+                  href={`tel:${settings.phoneSecondary.replace(/\s/g, "")}`}
+                  className="mt-4 font-serif text-2xl md:text-3xl text-foreground/80 hover:text-accent transition-colors"
+                >
+                  {settings.phoneSecondary}
+                </a>
+              )}
+              <div className="gold-divider mt-10 mb-8" />
+              <a
+                href={`tel:${settings.phoneHref}`}
+                className="inline-flex items-center gap-3 bg-accent text-accent-foreground px-10 h-14 tracking-[0.15em] text-xs uppercase shadow-gold hover:bg-accent/90 transition-colors"
+              >
+                <Phone className="h-4 w-4" /> {t("cta.bookShort") || t("form.submit")}
+              </a>
+            </div>
           </Reveal>
         </div>
       </div>
