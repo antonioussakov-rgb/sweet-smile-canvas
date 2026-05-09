@@ -1,48 +1,11 @@
-import { useState } from "react";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { MapPin, Phone, Mail, Clock, Check } from "lucide-react";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { useI18n } from "@/i18n/I18nProvider";
 import { useSiteSettings } from "@/contexts/SiteSettingsProvider";
-import { services } from "@/data/services";
 import { Reveal, SectionHeader } from "./Reveal";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { toast } from "sonner";
-
-const schema = z.object({
-  name: z.string().trim().min(2, "Nom trop court").max(100),
-  phone: z.string().trim().min(6, "Téléphone invalide").max(30),
-  email: z.string().trim().email("Email invalide").max(255),
-  service: z.string().min(1, "Veuillez choisir un soin"),
-  message: z.string().trim().max(1000).optional(),
-});
-type FormValues = z.infer<typeof schema>;
 
 export const Contact = () => {
   const { t, lang: _l } = useI18n(); const lang: "fr" | "ru" = _l === "en" ? "fr" : _l;
   const { settings } = useSiteSettings();
-  const [sent, setSent] = useState(false);
-
-  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<FormValues>({
-    resolver: zodResolver(schema),
-  });
-
-  const onSubmit = async (data: FormValues) => {
-    // Open default mail client with prefilled message — production would post to backend.
-    const subject = encodeURIComponent(`[RDV] ${data.name} — ${data.service}`);
-    const body = encodeURIComponent(
-      `Nom: ${data.name}\nTéléphone: ${data.phone}\nEmail: ${data.email}\nSoin: ${data.service}\n\n${data.message ?? ""}`
-    );
-    window.location.href = `mailto:${settings.email}?subject=${subject}&body=${body}`;
-    toast.success(t("form.success"));
-    setSent(true);
-    reset();
-    setTimeout(() => setSent(false), 6000);
-  };
 
   return (
     <section id="contact" className="relative py-24 md:py-36 bg-gradient-ivory grain">
