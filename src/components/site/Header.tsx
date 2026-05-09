@@ -56,9 +56,7 @@ export const Header = () => {
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-background/85 backdrop-blur-xl shadow-soft" : "bg-transparent"
-      }`}
+      className="fixed top-0 inset-x-0 z-50 bg-transparent"
     >
       <div className="container-luxe flex items-center justify-between py-4 md:py-5">
         <button onClick={() => go("hero")} className="flex items-baseline gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">
