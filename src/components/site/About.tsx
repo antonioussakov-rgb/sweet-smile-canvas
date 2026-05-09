@@ -61,8 +61,8 @@ export const About = () => {
                 </div>
                 <h4 className="font-serif text-xl text-primary">{m.name}</h4>
                 <div className="mt-2 mb-3 h-px w-8 bg-accent" />
-                <p className="text-sm text-accent uppercase tracking-widest">{m.role[lang]}</p>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{m.credit[lang]}</p>
+                <p className="text-sm text-accent uppercase tracking-widest">{(m.role as Record<string, string>)[lang] ?? m.role.fr}</p>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{(m.credit as Record<string, string>)[lang] ?? m.credit.fr}</p>
               </article>
             </Reveal>
           ))}

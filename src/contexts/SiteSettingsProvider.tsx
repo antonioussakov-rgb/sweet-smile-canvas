@@ -10,10 +10,10 @@ export type SiteSettings = {
   metro: string;
   hours: string;
   hoursRu: string;
-  heroTitle: { fr: string; ru: string };
-  heroSubtitle: { fr: string; ru: string };
-  aboutBody: { fr: string; ru: string };
-  aboutPhilosophy: { fr: string; ru: string };
+  heroTitle: Partial<Record<"fr" | "ru" | "en", string>> & { fr: string; ru: string };
+  heroSubtitle: Partial<Record<"fr" | "ru" | "en", string>> & { fr: string; ru: string };
+  aboutBody: Partial<Record<"fr" | "ru" | "en", string>> & { fr: string; ru: string };
+  aboutPhilosophy: Partial<Record<"fr" | "ru" | "en", string>> & { fr: string; ru: string };
   heroImageUrl: string;
   aboutImage1Url: string;
   aboutImage2Url: string;
