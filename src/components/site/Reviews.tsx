@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
-import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import { useI18n, Lang, type LocalizedString } from "@/i18n/I18nProvider";
+import { Star, Quote } from "lucide-react";
+import { useI18n, type LocalizedString } from "@/i18n/I18nProvider";
 import { Reveal, SectionHeader } from "./Reveal";
 
 type Review = { name: string; date: LocalizedString; text: LocalizedString; rating: number };
+
+const RATING = 4.6;
+const REVIEW_COUNT = 29;
 
 const reviews: Review[] = [
   {
@@ -13,15 +15,6 @@ const reviews: Review[] = [
     text: {
       fr: "Je tiens à exprimer ma sincère gratitude à toute l'équipe pour son professionnalisme, son attention et la qualité exceptionnelle des soins. Approche attentive, délicate, et traitement totalement indolore.",
       ru: "Хочу выразить искреннюю благодарность всей команде за профессионализм, внимание и исключительное качество ухода. Деликатный подход и абсолютно безболезненное лечение.",
-    },
-  },
-  {
-    name: "Olga",
-    date: { fr: "il y a un an", ru: "год назад" },
-    rating: 5,
-    text: {
-      fr: "Après de nombreuses années à chercher un dentiste de confiance, j'ai enfin découvert la clinique Kryvonis. Tous les clichés des soins flous sont un lointain souvenir.",
-      ru: "После долгих лет поисков надёжного стоматолога, я наконец нашла клинику Kryvonis. Все стереотипы о непонятном лечении остались в прошлом.",
     },
   },
   {
@@ -62,74 +55,90 @@ const reviews: Review[] = [
   },
 ];
 
+const RatingStars = ({ value, size = "h-4 w-4" }: { value: number; size?: string }) => {
+  const full = Math.floor(value);
+  const hasHalf = value - full >= 0.25 && value - full < 0.75;
+  const totalFull = hasHalf ? full : Math.round(value);
+  return (
+    <div className="flex items-center gap-1">
+      {Array.from({ length: 5 }).map((_, i) => {
+        if (i < totalFull) return <Star key={i} className={`${size} fill-accent text-accent`} />;
+        if (i === totalFull && hasHalf) {
+          return (
+            <div key={i} className={`relative ${size}`}>
+              <Star className={`${size} text-accent absolute inset-0`} />
+              <div className="absolute inset-0 overflow-hidden" style={{ width: "50%" }}>
+                <Star className={`${size} fill-accent text-accent`} />
+              </div>
+            </div>
+          );
+        }
+        return <Star key={i} className={`${size} text-accent/30`} />;
+      })}
+    </div>
+  );
+};
+
 export const Reviews = () => {
-  const { t, lang: _l } = useI18n(); const lang: "fr" | "ru" = _l === "en" ? "fr" : _l;
-  const [i, setI] = useState(0);
-  const next = () => setI((i + 1) % reviews.length);
-  const prev = () => setI((i - 1 + reviews.length) % reviews.length);
-
-  useEffect(() => {
-    const id = setInterval(next, 6500);
-    return () => clearInterval(id);
-  });
-
-  const r = reviews[i];
+  const { t, lang: _l } = useI18n();
+  const lang: "fr" | "ru" = _l === "en" ? "fr" : _l;
 
   return (
     <section id="reviews" className="relative py-24 md:py-36 bg-secondary grain">
       <div className="container-luxe">
         <SectionHeader eyebrow={t("reviews.eyebrow")} title={t("reviews.title")} />
 
+        {/* Rating hero */}
         <Reveal>
-          <div className="max-w-4xl mx-auto bg-background p-10 md:p-16 shadow-luxe relative">
-            <Quote className="absolute -top-6 left-10 h-16 w-16 text-accent/30 fill-accent/10" />
+          <div className="max-w-3xl mx-auto text-center mb-20 md:mb-24">
+            <div className="inline-flex flex-col items-center">
+              <span className="eyebrow text-accent !text-accent mb-6">{t("reviews.google")}</span>
 
-            <div className="flex items-center gap-1 mb-6">
-              {Array.from({ length: r.rating }).map((_, idx) => (
-                <Star key={idx} className="h-4 w-4 fill-accent text-accent" />
-              ))}
-            </div>
-
-            <blockquote className="font-serif text-2xl md:text-3xl text-primary leading-snug min-h-[10rem]">
-              « {r.text[lang]} »
-            </blockquote>
-
-            <div className="mt-8 flex items-center justify-between">
-              <div>
-                <div className="font-medium text-primary">{r.name}</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-widest mt-1">{r.date[lang]}</div>
+              <div className="flex items-baseline gap-3">
+                <span className="font-serif text-7xl md:text-8xl text-primary leading-none font-light tracking-tight">
+                  {RATING.toString().replace(".", ",")}
+                </span>
+                <span className="font-serif text-3xl md:text-4xl text-muted-foreground font-light">/ 5</span>
               </div>
-              <div className="flex items-center gap-2">
-                <button onClick={prev} aria-label="prev" className="h-10 w-10 border border-border hover:border-accent hover:text-accent transition-colors flex items-center justify-center">
-                  <ChevronLeft className="h-4 w-4" />
-                </button>
-                <button onClick={next} aria-label="next" className="h-10 w-10 border border-border hover:border-accent hover:text-accent transition-colors flex items-center justify-center">
-                  <ChevronRight className="h-4 w-4" />
-                </button>
-              </div>
-            </div>
 
-            <div className="flex gap-1 mt-6">
-              {reviews.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setI(idx)}
-                  className={`h-0.5 transition-all ${idx === i ? "w-8 bg-accent" : "w-4 bg-border"}`}
-                  aria-label={`Avis ${idx + 1}`}
-                />
-              ))}
+              <div className="mt-6 flex items-center gap-3">
+                <RatingStars value={RATING} size="h-5 w-5" />
+              </div>
+
+              <div className="mt-6 flex items-center gap-4">
+                <div className="h-px w-10 bg-accent" />
+                <span className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+                  {REVIEW_COUNT} {lang === "ru" ? "проверенных отзывов" : "avis vérifiés"}
+                </span>
+                <div className="h-px w-10 bg-accent" />
+              </div>
             </div>
           </div>
         </Reveal>
 
-        <Reveal delay={0.15}>
-          <div className="mt-10 flex items-center justify-center gap-3 text-sm text-muted-foreground">
-            <div className="flex">
-              {Array.from({ length: 5 }).map((_, k) => <Star key={k} className="h-4 w-4 fill-accent text-accent" />)}
-            </div>
-            <span>4,6 / 5 · {t("reviews.google")} (29)</span>
-          </div>
-        </Reveal>
+        {/* Testimonial cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border max-w-6xl mx-auto">
+          {reviews.slice(0, 5).map((r, i) => (
+            <Reveal key={r.name} delay={(i % 3) * 0.08}>
+              <article className="relative h-full bg-background p-8 md:p-10 flex flex-col">
+                <Quote className="absolute top-6 right-6 h-8 w-8 text-accent/20 fill-accent/10" />
+
+                <RatingStars value={r.rating} />
+
+                <blockquote className="mt-6 font-serif text-lg md:text-xl text-primary leading-relaxed flex-1">
+                  « {r.text[lang]} »
+                </blockquote>
+
+                <div className="mt-8 pt-6 border-t border-border">
+                  <div className="font-medium text-primary tracking-wide">{r.name}</div>
+                  <div className="text-[10px] text-muted-foreground uppercase tracking-[0.25em] mt-1.5">
+                    {r.date[lang]}
+                  </div>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
