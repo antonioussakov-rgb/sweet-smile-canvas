@@ -66,7 +66,7 @@ export const Contact = () => {
               <div className="gold-divider mt-10 mb-8" />
               <a
                 href={`tel:${settings.phoneHref}`}
-                className="inline-flex items-center gap-3 bg-accent text-accent-foreground px-10 h-14 tracking-[0.15em] text-xs uppercase shadow-gold hover:bg-accent/90 transition-colors"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-accent text-accent-foreground px-8 sm:px-10 h-14 tracking-[0.15em] text-xs uppercase shadow-gold hover:bg-accent/90 transition-colors"
               >
                 <Phone className="h-4 w-4" /> {t("cta.bookShort") || t("form.submit")}
               </a>
