@@ -61,12 +61,12 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.05, duration: 0.9 }}
-          className="mt-10 flex flex-wrap gap-4"
+          className="mt-10 flex flex-col sm:flex-row sm:flex-wrap gap-4"
         >
           <Button
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             size="lg"
-            className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-none px-8 h-14 tracking-[0.15em] text-xs uppercase shadow-gold"
+            className="w-full sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90 rounded-none px-8 h-14 tracking-[0.15em] text-xs uppercase shadow-gold"
           >
             {t("cta.book")}
           </Button>
@@ -74,7 +74,7 @@ export const Hero = () => {
             onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
             variant="outline"
             size="lg"
-            className="bg-transparent border-foreground/40 text-foreground hover:bg-foreground/10 hover:text-foreground rounded-none px-8 h-14 tracking-[0.15em] text-xs uppercase"
+            className="w-full sm:w-auto bg-transparent border-foreground/40 text-foreground hover:bg-foreground/10 hover:text-foreground rounded-none px-8 h-14 tracking-[0.15em] text-xs uppercase"
           >
             {t("nav.services")}
           </Button>
