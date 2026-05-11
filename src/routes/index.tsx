@@ -34,16 +34,16 @@ function Index() {
           <Header />
           <main>
             <Hero />
+            <Gallery />
+            <Reviews />
             <About />
             <Story />
             <Services />
             <ShowcaseVideo />
             <WhyUs />
-            <ClinicGallery />
-            <Gallery />
-            <Reviews />
             <FAQ />
             <Contact />
+            <ClinicGallery />
           </main>
           <Footer />
           <WhatsAppFAB />
