@@ -14,7 +14,7 @@ export const Contact = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           <Reveal>
-            <div className="bg-primary text-primary-foreground p-10 md:p-12 h-full flex flex-col">
+            <div className="bg-primary text-primary-foreground p-6 sm:p-10 md:p-12 h-full flex flex-col">
               <h3 className="font-serif text-3xl mb-8">Kryvonis Dental Studio</h3>
 
               <div className="space-y-6 text-sm">
