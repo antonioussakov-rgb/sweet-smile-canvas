@@ -47,11 +47,11 @@ export const Contact = () => {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="bg-background p-10 md:p-12 shadow-luxe h-full flex flex-col items-center justify-center text-center">
+            <div className="bg-background p-6 sm:p-10 md:p-12 shadow-luxe h-full flex flex-col items-center justify-center text-center">
               <div className="eyebrow mb-8">{t("contact.phone")}</div>
               <a
                 href={`tel:${settings.phoneHref}`}
-                className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground hover:text-accent transition-colors tracking-tight"
+                className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground hover:text-accent transition-colors tracking-tight break-words"
               >
                 {settings.phone}
               </a>
