@@ -35,9 +35,9 @@ function Index() {
           <main>
             <Hero />
             <Gallery />
-            <Reviews />
             <About />
             <Story />
+            <Reviews />
             <Services />
             <ShowcaseVideo />
             <WhyUs />
