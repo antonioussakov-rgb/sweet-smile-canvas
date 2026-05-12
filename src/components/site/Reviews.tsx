@@ -118,7 +118,7 @@ export const Reviews = () => {
 
         {/* Testimonial cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border max-w-6xl mx-auto">
-          {reviews.slice(0, 4).map((r, i) => (
+          {reviews.slice(0, 3).map((r, i) => (
             <Reveal key={r.name} delay={(i % 3) * 0.08}>
               <article className="relative h-full bg-background p-8 md:p-10 flex flex-col">
                 <Quote className="absolute top-6 right-6 h-8 w-8 text-accent/20 fill-accent/10" />
