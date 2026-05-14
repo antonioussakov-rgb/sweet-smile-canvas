@@ -60,12 +60,12 @@ export const VideoSection = ({ id, desktopSrc, mobileSrc, eyebrow, title, subtit
         >
           {eyebrow && <span className="eyebrow text-accent !text-accent">{eyebrow}</span>}
           {title && (
-            <h2 className="mt-6 max-w-4xl text-foreground font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1] font-light">
+            <h2 className="mt-6 max-w-4xl font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1] font-light" style={{ color: "#ffffff" }}>
               {title}
             </h2>
           )}
           {subtitle && (
-            <p className="mt-8 max-w-xl text-foreground/80 text-lg leading-relaxed">{subtitle}</p>
+            <p className="mt-8 max-w-xl text-lg leading-relaxed" style={{ color: "rgba(255,255,255,0.85)" }}>{subtitle}</p>
           )}
         </motion.div>
       )}
