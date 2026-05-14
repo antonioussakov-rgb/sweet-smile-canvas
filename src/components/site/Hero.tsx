@@ -44,7 +44,7 @@ export const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 1 }}
           className="mt-6 max-w-4xl font-serif italic text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] leading-[1] font-light tracking-tight"
-          style={{ fontFamily: '"Pinyon Script", "Cormorant Garamond", serif', fontWeight: 400, color: "#1A1918" }}
+          style={{ fontFamily: '"Pinyon Script", "Cormorant Garamond", serif', fontWeight: 400, color: "#ffffff" }}
         >
           {title}
         </motion.h1>
@@ -54,7 +54,7 @@ export const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.85, duration: 0.9 }}
           className="mt-8 max-w-xl text-lg leading-relaxed"
-          style={{ color: "#4A4845" }}
+          style={{ color: "rgba(255,255,255,0.85)" }}
         >
           {subtitle}
         </motion.p>
