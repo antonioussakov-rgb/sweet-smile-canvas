@@ -60,7 +60,7 @@ export const Header = () => {
     >
       <div className="container-luxe flex items-center justify-between py-4 md:py-5">
         <button onClick={() => go("hero")} className="flex items-baseline gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">
-          <span className="font-serif text-xl md:text-2xl tracking-wide text-foreground drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
+          <span className="font-serif text-xl md:text-2xl tracking-wide" style={{ color: "#2C2B28" }}>
             Kryvonis
           </span>
           <span className="text-[10px] uppercase tracking-[0.3em] text-accent drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
@@ -73,14 +73,13 @@ export const Header = () => {
           <div ref={langRef} className="relative">
             <button
               onClick={() => setLangOpen((v) => !v)}
-              className={`inline-flex items-center gap-1 rounded-full border px-3 py-1.5 text-base transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
-                scrolled ? "border-border bg-background/40" : "border-foreground/50 bg-background/30 backdrop-blur-sm"
-              }`}
+              className="inline-flex items-center gap-1 rounded-full border px-3 py-1.5 text-base transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              style={{ color: "#2C2B28", borderColor: "rgba(44,43,40,0.25)", backgroundColor: "rgba(245,244,241,0.7)" }}
               aria-label="Language"
               aria-expanded={langOpen}
             >
               <span aria-hidden="true" className="leading-none">{currentFlag}</span>
-              <ChevronDown className={`h-3 w-3 text-foreground/70 transition-transform ${langOpen ? "rotate-180" : ""}`} />
+              <ChevronDown className={`h-3 w-3 transition-transform ${langOpen ? "rotate-180" : ""}`} style={{ color: "#2C2B28" }} />
             </button>
             <AnimatePresence>
               {langOpen && (
