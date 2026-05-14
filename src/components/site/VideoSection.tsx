@@ -49,8 +49,8 @@ export const VideoSection = ({ id, desktopSrc, mobileSrc, eyebrow, title, subtit
           className="h-full w-full object-cover scale-110"
           aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-background/55" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background/80" />
+        <div className="absolute inset-0 bg-black/15" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30" />
       </motion.div>
 
       {(eyebrow || title || subtitle) && (
