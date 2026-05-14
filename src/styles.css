@@ -47,35 +47,35 @@
 }
 
 :root {
-  --background: 30 6% 13%;
-  --foreground: 36 28% 98%;
-  --card: 30 6% 17%;
-  --card-foreground: 36 28% 98%;
-  --popover: 30 6% 17%;
-  --popover-foreground: 36 28% 98%;
-  --primary: 36 28% 98%;
-  --primary-foreground: 30 6% 13%;
-  --secondary: 30 5% 20%;
-  --secondary-foreground: 36 28% 98%;
-  --muted: 30 5% 23%;
-  --muted-foreground: 36 14% 84%;
+  --background: 40 14% 91%;
+  --foreground: 40 4% 35%;
+  --card: 45 17% 95%;
+  --card-foreground: 45 5% 16%;
+  --popover: 45 17% 95%;
+  --popover-foreground: 45 5% 16%;
+  --primary: 45 5% 16%;
+  --primary-foreground: 45 17% 95%;
+  --secondary: 45 17% 95%;
+  --secondary-foreground: 45 5% 16%;
+  --muted: 45 14% 93%;
+  --muted-foreground: 40 4% 35%;
   --accent: 38 68% 74%;
   --accent-foreground: 30 8% 12%;
   --gold: 38 68% 74%;
   --gold-soft: 38 72% 86%;
   --destructive: 0 72% 55%;
   --destructive-foreground: 0 0% 100%;
-  --border: 30 5% 30%;
-  --input: 30 5% 30%;
+  --border: 40 8% 85%;
+  --input: 40 8% 85%;
   --ring: 38 68% 74%;
   --radius: 0.25rem;
 
-  --gradient-hero: linear-gradient(180deg, hsl(36 28% 92% / 0.18) 0%, hsl(30 8% 12% / 0.55) 45%, hsl(220 45% 8% / 0.85) 100%);
-  --gradient-hero-radial: radial-gradient(ellipse at 30% 40%, hsl(36 40% 80% / 0.15) 0%, transparent 60%);
+  --gradient-hero: linear-gradient(180deg, hsl(40 14% 91% / 0.18) 0%, hsl(40 14% 91% / 0.55) 45%, hsl(40 14% 88% / 0.85) 100%);
+  --gradient-hero-radial: radial-gradient(ellipse at 30% 40%, hsl(38 68% 74% / 0.15) 0%, transparent 60%);
   --gradient-gold: linear-gradient(135deg, hsl(38 68% 74%), hsl(38 72% 86%));
-  --gradient-ivory: linear-gradient(180deg, hsl(30 6% 13%), hsl(30 6% 17%));
-  --shadow-luxe: 0 30px 60px -25px hsl(30 10% 3% / 0.6);
-  --shadow-soft: 0 10px 30px -15px hsl(30 10% 3% / 0.5);
+  --gradient-ivory: linear-gradient(180deg, hsl(40 14% 91%), hsl(45 17% 95%));
+  --shadow-luxe: 0 30px 60px -25px rgba(0, 0, 0, 0.05);
+  --shadow-soft: 0 10px 30px -15px rgba(0, 0, 0, 0.05);
   --shadow-gold: 0 10px 40px -10px hsl(38 68% 74% / 0.45);
   --transition-luxe: cubic-bezier(0.22, 1, 0.36, 1);
 }
