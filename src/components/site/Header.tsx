@@ -60,7 +60,7 @@ export const Header = () => {
     >
       <div className="container-luxe flex items-center justify-between py-4 md:py-5">
         <button onClick={() => go("hero")} className="flex items-baseline gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm">
-          <span className="font-serif text-xl md:text-2xl tracking-wide text-foreground drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
+          <span className="font-serif text-xl md:text-2xl tracking-wide" style={{ color: "#2C2B28" }}>
             Kryvonis
           </span>
           <span className="text-[10px] uppercase tracking-[0.3em] text-accent drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
