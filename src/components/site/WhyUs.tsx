@@ -20,16 +20,16 @@ const stats = [
 export const WhyUs = () => {
   const { t, lang: _l } = useI18n(); const lang: "fr" | "ru" = _l === "en" ? "fr" : _l;
   return (
-    <section id="why" className="relative py-24 md:py-36 bg-primary text-primary-foreground overflow-hidden grain">
+    <section id="why" className="relative py-24 md:py-36 bg-background text-foreground overflow-hidden grain">
       <div
-        className="absolute inset-0 opacity-15 bg-cover bg-center"
+        className="absolute inset-0 opacity-10 bg-cover bg-center"
         style={{ backgroundImage: `url(${clinicLounge})` }}
         aria-hidden="true"
       />
-      <div className="absolute inset-0 bg-primary/80" aria-hidden="true" />
+      <div className="absolute inset-0 bg-background/85" aria-hidden="true" />
 
       <div className="relative container-luxe">
-        <SectionHeader eyebrow={t("why.eyebrow")} title={t("why.title")} light />
+        <SectionHeader eyebrow={t("why.eyebrow")} title={t("why.title")} />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {items.map((it, i) => {
@@ -40,20 +40,20 @@ export const WhyUs = () => {
                   <div className="inline-flex items-center justify-center h-14 w-14 border border-accent/40 text-accent mb-5">
                     <Icon className="h-6 w-6 stroke-[1.25]" />
                   </div>
-                  <h3 className="font-serif text-xl mb-2">{it.title[lang]}</h3>
-                  <p className="text-sm text-primary-foreground/70 leading-relaxed">{it.body[lang]}</p>
+                  <h3 className="font-serif text-xl mb-2 text-primary">{it.title[lang]}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{it.body[lang]}</p>
                 </div>
               </Reveal>
             );
           })}
         </div>
 
-        <div className="mt-24 grid grid-cols-2 lg:grid-cols-4 gap-px bg-primary-foreground/10 border border-primary-foreground/10">
+        <div className="mt-24 grid grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
           {stats.map((s, i) => (
             <Reveal key={s.k} delay={i * 0.06}>
-              <div className="bg-primary p-8 text-center">
+              <div className="bg-card p-8 text-center">
                 <div className="font-serif text-4xl md:text-5xl text-accent">{s.v}</div>
-                <div className="mt-2 text-xs uppercase tracking-[0.2em] text-primary-foreground/60">{t(s.k)}</div>
+                <div className="mt-2 text-xs uppercase tracking-[0.2em] text-muted-foreground">{t(s.k)}</div>
               </div>
             </Reveal>
           ))}
